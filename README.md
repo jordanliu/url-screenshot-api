@@ -20,16 +20,17 @@ bun run dev
 
 ## Usage
 
+> [!NOTE]  
+> The initial request will be slower than the subsequent requests due to browser initialization.
+
 `GET /screenshot`
 
-Parameters
-
-- url (required): The URL of the webpage you want to capture.
-- width (optional): The width of the screenshot. Defaults to 1920ox if not provided.
-- height (optional): The height of the screenshot. Defaults to 1080px if not provided.
-- theme (optional): The theme to use for the screenshot. Options include:
-- - light (default)
-- - dark
+| Parameter | Required | Description                                      | Default |
+| --------- | -------- | ------------------------------------------------ | ------- |
+| url       | Yes      | The URL of the webpage you want to capture       | -       |
+| width     | No       | The width of the screenshot                      | 1920px  |
+| height    | No       | The height of the screenshot                     | 1080px  |
+| theme     | No       | The theme to use for the screenshot (light/dark) | light   |
 
 ```bash
 curl "http://localhost:3000/screenshot?url=https://googlechromelabs.github.io/dark-mode-toggle/demo/&width=1920&height=1080&theme=dark" --output screenshot.png
