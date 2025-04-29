@@ -1,7 +1,25 @@
 import { Elysia } from "elysia";
+import screenshot from "lib/routes/screenshot";
+import { initBrowser, cleanupBrowser } from "lib/utils/browser";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const port = process.env.PORT || 3000;
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+// Initialize the browser when the server starts
+await initBrowser();
+
+const app = new Elysia().use(screenshot).listen(port);
+
+console.log(`🚀 Server is running at ${app.server?.hostname}:${port}`);
+
+// Handle cleanup on process termination
+process.on("SIGINT", async () => {
+  console.log("Shutting down gracefully...");
+  await cleanupBrowser();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  console.log("Shutting down gracefully...");
+  await cleanupBrowser();
+  process.exit(0);
+});

@@ -1,15 +1,19 @@
 {
-  "name": "app",
-  "version": "1.0.50",
+  "name": "url-screenshot-api",
+  "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run dist/index.js",
+    "build": "bun build src/index.ts --target bun --outdir dist"
   },
   "dependencies": {
-    "elysia": "latest"
+    "elysia": "latest",
+    "puppeteer": "^24.7.2"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "typescript": "^5.8.3"
   },
   "module": "src/index.js"
 }

@@ -1,0 +1,3 @@
+entrypoint = "src/index.ts"
+outdir = "dist"
+target = "bun"
